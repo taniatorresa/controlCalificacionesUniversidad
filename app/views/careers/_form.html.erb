@@ -1,0 +1,30 @@
+<%= form_for(career) do |f| %>
+  <% if career.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(career.errors.count, "error") %> prohibited this career from being saved:</h2>
+
+      <ul>
+      <% career.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre_carrera %>
+    <%= f.text_field :nombre_carrera %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre_abbr %>
+    <%= f.text_field :nombre_abbr %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre_facultad %>
+    <%= f.select :faculty_id, Faculty.all.map { |u| [u.nombre_facultad, u.id ]} %>
+   </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<%= form_for(period) do |f| %>
+  <% if period.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(period.errors.count, "error") %> prohibited this period from being saved:</h2>
+
+      <ul>
+      <% period.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre_periodo %>
+    <%= f.text_field :nombre_periodo %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre_ciclo %>
+    <%= f.select :school_cycle_id, SchoolCycle.all.map { |u| [u.nombre_ciclo, u.id ]} %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
