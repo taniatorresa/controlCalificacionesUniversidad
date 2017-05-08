@@ -1,0 +1,28 @@
+<%= form_for(school_cycle) do |f| %>
+  <% if school_cycle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(school_cycle.errors.count, "error") %> prohibited this school_cycle from being saved:</h2>
+
+      <ul>
+      <% school_cycle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre_ciclo %>
+    <%= f.text_field :nombre_ciclo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre_carrera %>
+    <%= f.select :career_id, Career.all.map { |u| [u.nombre_carrera, u.id ]} %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
