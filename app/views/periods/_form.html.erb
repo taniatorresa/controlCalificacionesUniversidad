@@ -19,6 +19,12 @@
     <%= f.label :nombre_ciclo %>
     <%= f.select :school_cycle_id, SchoolCycle.all.map { |u| [u.nombre_ciclo, u.id ]} %>
   </div>
+  <div class="field">
+    <%= f.label :period_type %><br>
+    <%= f.select :period_type, Period.period_types.keys.to_a, {prompt:"Select"} %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
