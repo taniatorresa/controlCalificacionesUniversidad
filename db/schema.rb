@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508071557) do
+ActiveRecord::Schema.define(version: 20170508083103) do
 
   create_table "careers", force: :cascade do |t|
     t.string   "nombre_carrera"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170508071557) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "school_cycle_id"
+    t.integer  "period_type"
     t.index ["school_cycle_id"], name: "index_periods_on_school_cycle_id"
   end
 
