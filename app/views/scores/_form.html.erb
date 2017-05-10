@@ -1,0 +1,32 @@
+<%= form_for(score) do |f| %>
+  <% if score.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(score.errors.count, "error") %> prohibited this score from being saved:</h2>
+
+      <ul>
+      <% score.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :aplicar_parcial %>
+    <%= f.check_box :aplicar_parcial %>
+  </div>
+
+  <div class="field">
+    <%= f.label :score_type %>
+    <%= f.select :score_type, Score.score_types.keys.to_a, {prompt:"Select"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :calification %>
+    <%= f.text_field :calification %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Aplicar parcial:</strong>
+  <%= @score.aplicar_parcial %>
+</p>
+
+<p>
+  <strong>Score type:</strong>
+  <%= @score.score_type %>
+</p>
+
+<p>
+  <strong>Calification:</strong>
+  <%= @score.calification %>
+</p>
+
+<%= link_to 'Edit', edit_score_path(@score) %> |
+<%= link_to 'Back', scores_path %>

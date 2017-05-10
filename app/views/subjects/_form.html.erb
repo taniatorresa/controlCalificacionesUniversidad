@@ -1,0 +1,36 @@
+<%= form_for(subject) do |f| %>
+  <% if subject.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(subject.errors.count, "error") %> prohibited this subject from being saved:</h2>
+
+      <ul>
+      <% subject.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre_materia %>
+    <%= f.text_field :nombre_materia %>
+  </div>
+
+  <div class="field">
+    <%= f.label :subject_type %>
+    <%= f.select :subject_type, Subject.subject_types.keys.to_a, {prompt:"Select"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :clave_materia %>
+    <%= f.text_field :clave_materia %>
+  </div>
+    <div class="field">
+    <%= f.label :clave_grupo %>
+    <%= f.select :group_id, Group.all.map { |u| [u.clave_grupo, u.id ]} %>
+   </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
