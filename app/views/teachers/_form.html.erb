@@ -1,0 +1,47 @@
+<%= form_for(teacher) do |f| %>
+  <% if teacher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+
+      <ul>
+      <% teacher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apellido_paterno %>
+    <%= f.text_field :apellido_paterno %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apellido_materno %>
+    <%= f.text_field :apellido_materno %>
+  </div>
+
+  <div class="field">
+    <%= f.label :grado %>
+    <%= f.text_field :grado %>
+  </div>
+
+  <div class="field">
+    <%= f.label :correo_electronico %>
+    <%= f.text_field :correo_electronico %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefono %>
+    <%= f.text_field :telefono %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lunes: false
+  martes: false
+  miercoles: false
+  jueves: false
+  viernes: false
+  sabado: false
+  horario_clases: MyString
+
+two:
+  lunes: false
+  martes: false
+  miercoles: false
+  jueves: false
+  viernes: false
+  sabado: false
+  horario_clases: MyString

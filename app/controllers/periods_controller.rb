@@ -69,6 +69,6 @@ class PeriodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def period_params
-      params.require(:period).permit(:nombre_periodo,:period_type,:school_cycle_id)
+      params.require(:period).permit(:nombre_periodo,:period_type,:school_cycle_id,subjects_ids: [], teachers_ids: [])
     end
 end

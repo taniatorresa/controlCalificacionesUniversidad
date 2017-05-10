@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  aplicar_parcial: false
+  score_type: 1
+  calification: 1.5
+
+two:
+  aplicar_parcial: false
+  score_type: 1
+  calification: 1.5

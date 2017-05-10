@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Presence type:</strong>
+  <%= @presence.presence_type %>
+</p>
+
+<p>
+  <strong>Fecha asistencia:</strong>
+  <%= @presence.fecha_asistencia %>
+</p>
+
+<%= link_to 'Edit', edit_presence_path(@presence) %> |
+<%= link_to 'Back', presences_path %>
