@@ -1,0 +1,2 @@
+module CycleHasSubjectsHelper
+end

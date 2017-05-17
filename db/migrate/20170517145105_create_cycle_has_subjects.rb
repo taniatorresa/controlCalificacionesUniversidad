@@ -1,6 +1,6 @@
-class CreatePeriodHasGroups < ActiveRecord::Migration[5.0]
+class CreateCycleHasSubjects < ActiveRecord::Migration[5.0]
   def change
-    create_table :period_has_groups do |t|
+    create_table :cycle_has_subjects do |t|
       t.boolean :lunes
       t.boolean :martes
       t.boolean :miercoles
@@ -8,6 +8,7 @@ class CreatePeriodHasGroups < ActiveRecord::Migration[5.0]
       t.boolean :viernes
       t.boolean :sabado
       t.string :horario_clases
+
       t.timestamps
     end
   end

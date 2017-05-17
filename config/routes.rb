@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
+
+  resources :cycle_has_subjects
+  get 'period_has_groups/index'
+
+  get 'period_has_groups/new'
+
+  get 'period_has_groups/show'
+
+  get 'period_has_groups/edit'
+
+
   devise_for :users
+
   resources :presences
   resources :scores
   resources :students

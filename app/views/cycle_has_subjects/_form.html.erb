@@ -1,0 +1,66 @@
+<%= form_for(cycle_has_subject) do |f| %>
+  <% if cycle_has_subject.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cycle_has_subject.errors.count, "error") %> prohibited this cycle_has_subject from being saved:</h2>
+
+      <ul>
+      <% cycle_has_subject.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lunes %>
+    <%= f.check_box :lunes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :martes %>
+    <%= f.check_box :martes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :miercoles %>
+    <%= f.check_box :miercoles %>
+  </div>
+
+  <div class="field">
+    <%= f.label :jueves %>
+    <%= f.check_box :jueves %>
+  </div>
+
+  <div class="field">
+    <%= f.label :viernes %>
+    <%= f.check_box :viernes %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sabado %>
+    <%= f.check_box :sabado %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre_ciclo %>
+    <%= f.select :school_cycle_id, SchoolCycle.all.map { |u| [u.nombre_ciclo, u.id ]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre_materia %>
+    <%= f.select :subject_id, Subject.all.map { |u| [u.nombre_materia, u.id ]} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre  %>
+    <%= f.select :teacher_id, Teacher.all.map { |u| [u.nombre, u.id ]} %>
+  </div>
+  <div class="field">
+    <%= f.label :horario_clases %>
+    <%= f.text_field :horario_clases %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

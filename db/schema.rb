@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516093916) do
+ActiveRecord::Schema.define(version: 20170517152821) do
 
   create_table "careers", force: :cascade do |t|
     t.string   "nombre_carrera"
@@ -19,6 +19,24 @@ ActiveRecord::Schema.define(version: 20170516093916) do
     t.datetime "updated_at",     null: false
     t.integer  "faculty_id"
     t.index ["faculty_id"], name: "index_careers_on_faculty_id"
+  end
+
+  create_table "cycle_has_subjects", force: :cascade do |t|
+    t.boolean  "lunes"
+    t.boolean  "martes"
+    t.boolean  "miercoles"
+    t.boolean  "jueves"
+    t.boolean  "viernes"
+    t.boolean  "sabado"
+    t.string   "horario_clases"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "teacher_id"
+    t.integer  "subject_id"
+    t.integer  "school_cycle_id"
+    t.index ["school_cycle_id"], name: "index_cycle_has_subjects_on_school_cycle_id"
+    t.index ["subject_id"], name: "index_cycle_has_subjects_on_subject_id"
+    t.index ["teacher_id"], name: "index_cycle_has_subjects_on_teacher_id"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -41,22 +59,6 @@ ActiveRecord::Schema.define(version: 20170516093916) do
     t.integer  "period_has_groups_id"
     t.index ["period_has_groups_id"], name: "index_period_has_group_has_students_on_period_has_groups_id"
     t.index ["student_id"], name: "index_period_has_group_has_students_on_student_id"
-  end
-
-  create_table "period_has_groups", force: :cascade do |t|
-    t.boolean  "lunes"
-    t.boolean  "martes"
-    t.boolean  "miercoles"
-    t.boolean  "jueves"
-    t.boolean  "viernes"
-    t.boolean  "sabado"
-    t.string   "horario_clases"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "teacher_id"
-    t.integer  "period_id"
-    t.index ["period_id"], name: "index_period_has_groups_on_period_id"
-    t.index ["teacher_id"], name: "index_period_has_groups_on_teacher_id"
   end
 
   create_table "periods", force: :cascade do |t|
@@ -110,10 +112,12 @@ ActiveRecord::Schema.define(version: 20170516093916) do
     t.string   "nombre_materia"
     t.integer  "subject_type"
     t.string   "clave_materia"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "group_id"
+    t.integer  "period_has_group_id"
     t.index ["group_id"], name: "index_subjects_on_group_id"
+    t.index ["period_has_group_id"], name: "index_subjects_on_period_has_group_id"
   end
 
   create_table "teachers", force: :cascade do |t|

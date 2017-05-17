@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lunes:</strong>
+  <%= @cycle_has_subject.lunes %>
+</p>
+
+<p>
+  <strong>Martes:</strong>
+  <%= @cycle_has_subject.martes %>
+</p>
+
+<p>
+  <strong>Miercoles:</strong>
+  <%= @cycle_has_subject.miercoles %>
+</p>
+
+<p>
+  <strong>Jueves:</strong>
+  <%= @cycle_has_subject.jueves %>
+</p>
+
+<p>
+  <strong>Viernes:</strong>
+  <%= @cycle_has_subject.viernes %>
+</p>
+
+<p>
+  <strong>Sabado:</strong>
+  <%= @cycle_has_subject.sabado %>
+</p>
+
+<p>
+  <strong>Nombre ciclo </strong>
+  <%= @cycle_has_subject.school_cycle.nombre_ciclo %>
+</p>
+
+<p>
+  <strong>Nombre materia </strong>
+  <%= @cycle_has_subject.subject.nombre_materia %>
+</p>
+<p>
+  <strong>Nombre maestro </strong>
+  <%= @cycle_has_subject.teacher.nombre %>
+</p>
+
+<p>
+  <strong>Horario clases:</strong>
+  <%= @cycle_has_subject.horario_clases %>
+</p>
+
+
+<%= link_to 'Edit', edit_cycle_has_subject_path(@cycle_has_subject) %> |
+<%= link_to 'Back', cycle_has_subjects_path %>
