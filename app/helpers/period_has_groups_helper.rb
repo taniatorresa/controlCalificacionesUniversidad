@@ -1,0 +1,2 @@
+module PeriodHasGroupsHelper
+end

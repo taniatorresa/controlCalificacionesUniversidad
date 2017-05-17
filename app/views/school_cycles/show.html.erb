@@ -5,5 +5,8 @@
   <%= @school_cycle.nombre_ciclo %>
 </p>
 
+  <strong>Nombre maestro </strong>
+  <%= @school_cycle.career.nombre_carrera %>
+</p>
 <%= link_to 'Edit', edit_school_cycle_path(@school_cycle) %> |
 <%= link_to 'Back', school_cycles_path %>

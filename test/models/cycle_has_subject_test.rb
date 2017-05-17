@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PeriodHasGroupTest < ActiveSupport::TestCase
+class CycleHasSubjectTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

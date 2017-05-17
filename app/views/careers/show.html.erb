@@ -9,6 +9,10 @@
   <strong>Nombre abbr:</strong>
   <%= @career.nombre_abbr %>
 </p>
+<p>
+  <strong>Facultad</strong>
+  <%= @career.faculty.nombre_facultad %>
+</p>
 
 <%= link_to 'Edit', edit_career_path(@career) %> |
 <%= link_to 'Back', careers_path %>

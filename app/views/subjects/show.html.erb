@@ -15,5 +15,8 @@
   <%= @subject.clave_materia %>
 </p>
 
+  <strong>Nombre grupo </strong>
+  <%= @subject.group.clave_grupo %>
+</p>
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>
