@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517152821) do
+ActiveRecord::Schema.define(version: 20170517204026) do
 
   create_table "careers", force: :cascade do |t|
     t.string   "nombre_carrera"
@@ -51,16 +51,6 @@ ActiveRecord::Schema.define(version: 20170517152821) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "period_has_group_has_students", force: :cascade do |t|
-    t.integer  "student_subject_type"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "student_id"
-    t.integer  "period_has_groups_id"
-    t.index ["period_has_groups_id"], name: "index_period_has_group_has_students_on_period_has_groups_id"
-    t.index ["student_id"], name: "index_period_has_group_has_students_on_student_id"
-  end
-
   create_table "periods", force: :cascade do |t|
     t.string   "nombre_periodo"
     t.datetime "created_at",      null: false
@@ -73,8 +63,10 @@ ActiveRecord::Schema.define(version: 20170517152821) do
   create_table "presences", force: :cascade do |t|
     t.integer  "presence_type"
     t.date     "fecha_asistencia"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "student_has_subject_id"
+    t.index ["student_has_subject_id"], name: "index_presences_on_student_has_subject_id"
   end
 
   create_table "school_cycles", force: :cascade do |t|
@@ -89,8 +81,20 @@ ActiveRecord::Schema.define(version: 20170517152821) do
     t.boolean  "aplicar_parcial"
     t.integer  "score_type"
     t.float    "calification"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "student_has_subject_id"
+    t.index ["student_has_subject_id"], name: "index_scores_on_student_has_subject_id"
+  end
+
+  create_table "student_has_subjects", force: :cascade do |t|
+    t.integer  "student_subject_type"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "student_id"
+    t.integer  "cycle_has_subject_id"
+    t.index ["cycle_has_subject_id"], name: "index_student_has_subjects_on_cycle_has_subject_id"
+    t.index ["student_id"], name: "index_student_has_subjects_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|

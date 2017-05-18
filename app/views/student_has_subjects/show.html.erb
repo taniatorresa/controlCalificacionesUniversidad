@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student subject type:</strong>
+  <%= @student_has_subject.student_subject_type %>
+</p>
+<p>
+  <strong>Matricula</strong>
+  <%= @student_has_subject.student.matricula %>
+</p>
+
+
+<%= link_to 'Edit', edit_student_has_subject_path(@student_has_subject) %> |
+<%= link_to 'Back', student_has_subjects_path %>

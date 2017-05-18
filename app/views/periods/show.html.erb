@@ -4,8 +4,15 @@
   <strong>Nombre periodo:</strong>
   <%= @period.nombre_periodo %>
 </p>
-
+<p>
+  <strong>Nombre periodo:</strong>
    <%= @period.period_type %>
+</p>
+
+<p>
+  <strong>Nombre periodo:</strong>
+   <%= @period.school_cycle.nombre_ciclo %>
+</p>
 
 <%= link_to 'Edit', edit_period_path(@period) %> |
 <%= link_to 'Back', periods_path %>

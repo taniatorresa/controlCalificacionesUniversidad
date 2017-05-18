@@ -69,6 +69,6 @@ class ScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def score_params
-      params.require(:score).permit(:aplicar_parcial, :score_type, :calification)
+      params.require(:score).permit(:aplicar_parcial, :score_type, :calification,:student_has_subject_id)
     end
 end
