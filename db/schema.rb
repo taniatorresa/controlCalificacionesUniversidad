@@ -55,9 +55,7 @@ ActiveRecord::Schema.define(version: 20170510173141) do
     t.datetime "updated_at",     null: false
     t.integer  "teacher_id"
     t.integer  "period_id"
-    t.integer  "subject_id"
     t.index ["period_id"], name: "index_period_has_groups_on_period_id"
-    t.index ["subject_id"], name: "index_period_has_groups_on_subject_id"
     t.index ["teacher_id"], name: "index_period_has_groups_on_teacher_id"
   end
 
@@ -112,12 +110,10 @@ ActiveRecord::Schema.define(version: 20170510173141) do
     t.string   "nombre_materia"
     t.integer  "subject_type"
     t.string   "clave_materia"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "group_id"
-    t.integer  "period_has_group_id"
     t.index ["group_id"], name: "index_subjects_on_group_id"
-    t.index ["period_has_group_id"], name: "index_subjects_on_period_has_group_id"
   end
 
   create_table "teachers", force: :cascade do |t|

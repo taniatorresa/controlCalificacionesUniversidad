@@ -1,3 +1,48 @@
-// Place all the styles related to the faculties controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Place all the styles related to the faculties controller here.
+ They will automatically be included in application.css.
+ You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+body{
+	background-image: url("dimension.png");
+}
+.enc{
+	background-color: lavender;
+	width: 50%;
+	height: 40px;
+	margin: auto;
+	text-align: center;
+	line-height: 40px;
+}
+
+.scop{
+	background-color: lavenderblush;
+	width: 50%;
+	height: 400px;
+	border-radius: 3px;
+	margin: auto;
+	overflow: auto;
+}
+
+.btn-show{
+	border-width: 5px;
+	border-radius: 3px;
+	border-color: #F7DE19;
+	height: 35px;
+}
+
+.btn-1  {
+	width: 50%;
+	height: 35px;
+	margin: auto;
+	border-radius: 3px;
+	border-color: #F7DE19;
+	background-color: #F7DE19;
+	text-align: center;
+	line-height: 35px;
+	font-size: 23px;
+}
+	a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+	margin: auto;
+	}
+
