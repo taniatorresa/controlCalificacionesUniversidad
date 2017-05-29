@@ -20,6 +20,9 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'autoprefixer-rails'
+gem 'prawn', '~> 2.1'
+gem 'prawn-table', '~> 0.2.2'
+gem 'cocoon', '~> 1.2', '>= 1.2.9'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -35,6 +38,8 @@ gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'byebug', platform: :mri
 end
 

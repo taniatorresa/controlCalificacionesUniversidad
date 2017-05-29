@@ -22,9 +22,11 @@
     <%= f.select :cycle_has_subject_id, CycleHasSubject.all.map { |u| u.id } %>
    </div>
 
+
+
   <div class="field">
-    <%= f.label :matricula %>
-    <%= f.select :student_id, Student.all.map { |u| [u.matricula, u.id ]} %>
+    <%= f.label :nombre %>
+    <%= f.select :student_id, Student.all.map { |u| [u.nombre_estudiante, u.id ]} %>
    </div>
   <div class="actions">
     <%= f.submit %>
