@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  resources :student_has_subjects
+  devise_for :users
+  resources :cycle_has_subjects
   resources :presences
   resources :scores
   resources :students

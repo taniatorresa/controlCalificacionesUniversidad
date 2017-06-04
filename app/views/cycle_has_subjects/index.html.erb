@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cycle Has Subjects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lunes</th>
+      <th>Martes</th>
+      <th>Miercoles</th>
+      <th>Jueves</th>
+      <th>Viernes</th>
+      <th>Sabado</th>
+      <th>Horario clases</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cycle_has_subjects.each do |cycle_has_subject| %>
+      <tr>
+        <td><%= cycle_has_subject.lunes %></td>
+        <td><%= cycle_has_subject.martes %></td>
+        <td><%= cycle_has_subject.miercoles %></td>
+        <td><%= cycle_has_subject.jueves %></td>
+        <td><%= cycle_has_subject.viernes %></td>
+        <td><%= cycle_has_subject.sabado %></td>
+        <td><%= cycle_has_subject.horario_clases %></td>
+        <td><%= link_to 'Show', cycle_has_subject %></td>
+        <td><%= link_to 'Edit', edit_cycle_has_subject_path(cycle_has_subject) %></td>
+        <td><%= link_to 'Destroy', cycle_has_subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cycle Has Subject', new_cycle_has_subject_path %>

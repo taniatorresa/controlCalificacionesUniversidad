@@ -1,4 +1,4 @@
 class Presence < ApplicationRecord
-belongs_to :period_has_group_has_student
+belongs_to :student_has_subject
 enum presence_type: ['Asistio', 'Retardo', 'Falta', 'Justificante']
 end
