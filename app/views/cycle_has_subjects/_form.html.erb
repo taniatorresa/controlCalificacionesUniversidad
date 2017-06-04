@@ -53,7 +53,7 @@
 
   <div class="field">
     <%= f.label :nombre  %>
-    <%= f.select :teacher_id, Teacher.all.map { |u| [u.nombre, u.id ]} %>
+    <%= f.select :teacher_id, Teacher.all.map { |u| [u.nombre_maestro, u.id ]} %>
   </div>
   <div class="field">
     <%= f.label :horario_clases %>

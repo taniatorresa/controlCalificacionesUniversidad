@@ -6,4 +6,8 @@ class StudentHasSubject < ApplicationRecord
   has_many :presences, :dependent => :destroy
   has_many :scores, :dependent => :destroy
 
+    accepts_nested_attributes_for :cycle_has_subject,
+                                reject_if: :all_blank,
+                                allow_destroy: true
+
 end

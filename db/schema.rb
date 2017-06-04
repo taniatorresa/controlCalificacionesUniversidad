@@ -10,13 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516092412) do
+
+ActiveRecord::Schema.define(version: 20170517170058) do
 
   create_table "careers", force: :cascade do |t|
     t.string   "nombre_carrera"
     t.string   "nombre_abbr"
+    t.integer  "faculty_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+
+    t.index ["faculty_id"], name: "index_careers_on_faculty_id"
+  end
+
+  create_table "cycle_has_subjects", force: :cascade do |t|
+    t.boolean  "lunes"
+    t.boolean  "martes"
+    t.boolean  "miercoles"
+    t.boolean  "jueves"
+    t.boolean  "viernes"
+    t.boolean  "sabado"
+    t.string   "horario_clases"
+    t.integer  "teacher_id"
+    t.integer  "subject_id"
+    t.integer  "school_cycle_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["school_cycle_id"], name: "index_cycle_has_subjects_on_school_cycle_id"
+    t.index ["subject_id"], name: "index_cycle_has_subjects_on_subject_id"
+    t.index ["teacher_id"], name: "index_cycle_has_subjects_on_teacher_id"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -27,14 +49,85 @@ ActiveRecord::Schema.define(version: 20170516092412) do
 
   create_table "periods", force: :cascade do |t|
     t.string   "nombre_periodo"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "period_type"
+    t.integer  "school_cycle_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["school_cycle_id"], name: "index_periods_on_school_cycle_id"
+  end
+
+  create_table "presences", force: :cascade do |t|
+    t.integer  "presence_type"
+    t.date     "fecha_asistencia"
+    t.integer  "student_has_subject_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["student_has_subject_id"], name: "index_presences_on_student_has_subject_id"
   end
 
   create_table "school_cycles", force: :cascade do |t|
     t.string   "nombre_ciclo"
+    t.integer  "career_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+
+    t.index ["career_id"], name: "index_school_cycles_on_career_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.boolean  "aplicar_parcial"
+    t.integer  "score_type"
+    t.float    "calification"
+    t.integer  "student_has_subject_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["student_has_subject_id"], name: "index_scores_on_student_has_subject_id"
+  end
+
+  create_table "student_has_subjects", force: :cascade do |t|
+    t.integer  "student_subject_type"
+    t.integer  "student_id"
+    t.integer  "cycle_has_subject_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["cycle_has_subject_id"], name: "index_student_has_subjects_on_cycle_has_subject_id"
+    t.index ["student_id"], name: "index_student_has_subjects_on_student_id"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string   "matricula"
+    t.string   "nombre"
+    t.string   "apellido_paterno"
+    t.string   "apellido_materno"
+    t.string   "correo_electronico"
+    t.string   "direccion"
+    t.string   "telefono"
+    t.string   "nombre_tutor"
+    t.string   "telefono_tutor"
+    t.string   "correo_tutor"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string   "nombre_materia"
+    t.integer  "subject_type"
+    t.string   "clave_materia"
+    t.integer  "group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["group_id"], name: "index_subjects_on_group_id"
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string   "nombre"
+    t.string   "apellido_paterno"
+    t.string   "apellido_materno"
+    t.string   "grado"
+    t.string   "correo_electronico"
+    t.string   "telefono"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|
