@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517204026) do
+ActiveRecord::Schema.define(version: 20170517170058) do
 
   create_table "careers", force: :cascade do |t|
     t.string   "nombre_carrera"
     t.string   "nombre_abbr"
+    t.integer  "faculty_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.integer  "faculty_id"
     t.index ["faculty_id"], name: "index_careers_on_faculty_id"
   end
 
@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 20170517204026) do
     t.boolean  "viernes"
     t.boolean  "sabado"
     t.string   "horario_clases"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
     t.integer  "teacher_id"
     t.integer  "subject_id"
     t.integer  "school_cycle_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["school_cycle_id"], name: "index_cycle_has_subjects_on_school_cycle_id"
     t.index ["subject_id"], name: "index_cycle_has_subjects_on_subject_id"
     t.index ["teacher_id"], name: "index_cycle_has_subjects_on_teacher_id"
@@ -53,27 +53,27 @@ ActiveRecord::Schema.define(version: 20170517204026) do
 
   create_table "periods", force: :cascade do |t|
     t.string   "nombre_periodo"
+    t.integer  "period_type"
+    t.integer  "school_cycle_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "school_cycle_id"
-    t.integer  "period_type"
     t.index ["school_cycle_id"], name: "index_periods_on_school_cycle_id"
   end
 
   create_table "presences", force: :cascade do |t|
     t.integer  "presence_type"
     t.date     "fecha_asistencia"
+    t.integer  "student_has_subject_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "student_has_subject_id"
     t.index ["student_has_subject_id"], name: "index_presences_on_student_has_subject_id"
   end
 
   create_table "school_cycles", force: :cascade do |t|
     t.string   "nombre_ciclo"
+    t.integer  "career_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "career_id"
     t.index ["career_id"], name: "index_school_cycles_on_career_id"
   end
 
@@ -81,18 +81,18 @@ ActiveRecord::Schema.define(version: 20170517204026) do
     t.boolean  "aplicar_parcial"
     t.integer  "score_type"
     t.float    "calification"
+    t.integer  "student_has_subject_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.integer  "student_has_subject_id"
     t.index ["student_has_subject_id"], name: "index_scores_on_student_has_subject_id"
   end
 
   create_table "student_has_subjects", force: :cascade do |t|
     t.integer  "student_subject_type"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
     t.integer  "student_id"
     t.integer  "cycle_has_subject_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.index ["cycle_has_subject_id"], name: "index_student_has_subjects_on_cycle_has_subject_id"
     t.index ["student_id"], name: "index_student_has_subjects_on_student_id"
   end
@@ -116,12 +116,10 @@ ActiveRecord::Schema.define(version: 20170517204026) do
     t.string   "nombre_materia"
     t.integer  "subject_type"
     t.string   "clave_materia"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
     t.integer  "group_id"
-    t.integer  "period_has_group_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.index ["group_id"], name: "index_subjects_on_group_id"
-    t.index ["period_has_group_id"], name: "index_subjects_on_period_has_group_id"
   end
 
   create_table "teachers", force: :cascade do |t|
