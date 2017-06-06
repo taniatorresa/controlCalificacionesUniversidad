@@ -5,4 +5,6 @@ class SchoolCycle < ApplicationRecord
   has_many :teachers, through: :cycle_has_subjects
   has_many :subjects, through: :cycle_has_subjects
   has_many :cycle_has_subjects, :dependent => :destroy
+
+  validates :nombre_ciclo, presence: true
 end
