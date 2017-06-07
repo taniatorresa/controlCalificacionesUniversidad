@@ -8,8 +8,18 @@ Rails.application.routes.draw do
   end
   devise_for :users
   resources :cycle_has_subjects
-  resources :presences
-  resources :scores
+  resources :presences do
+    collection do
+      get 'get_subjects'
+      get 'get_group'
+    end
+  end
+  resources :scores do
+    collection do
+      get 'get_subjects'
+      get 'get_group'
+    end
+  end
   resources :students
   resources :groups
   resources :subjects

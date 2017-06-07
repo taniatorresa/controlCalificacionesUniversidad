@@ -10,6 +10,25 @@
       </ul>
     </div>
   <% end %>
+   <div class="field">
+      <label>Alumno</label>
+        <% if @presence.new_record? %>
+          <%= f.select :student, Student.all.map { |c| [c.nombre_estudiante, c.id] },{ prompt: '- Seleccionar -' } %>
+        <% else %>
+          <%= f.select :student, Student.all.order(created_at: :desc).map{ |s| [s.nombre_estudiante, s.id]}, { prompt: '- Seleccionar -', selected: @presence.student_has_subject.student_id } %>
+        <% end %>
+
+    </div>
+
+    <div class="field">
+      <label>Materia</label>
+        <% if @presence.new_record? %>
+          <%= f.select :subject, {},{ prompt: '- Seleccionar -' } %>
+        <% else %>
+          <%= f.select :subject, Subject.joins("INNER JOIN cycle_has_subjects ON subjects.id = cycle_has_subjects.subject_id INNER JOIN student_has_subjects ON cycle_has_subjects.id = student_has_subjects.cycle_has_subject_id").where("student_id = ?", @presece.student_has_subject.student_id).map{ |s| [s.nombre_materia, s.id] }, { prompt: '- Seleccionar -', selected: @score.student_has_subject.student_id } %>
+        <% end %>
+        <%= f.hidden_field :student_has_subject_id %>
+    </div>
 
   <div class="field">
     <%= f.label :presence_type %>

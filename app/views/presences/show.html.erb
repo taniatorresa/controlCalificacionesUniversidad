@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong> Alumno </strong>
+ <%=  @presence.student_has_subject.student.matricula %>
+</p>
+
+<p>
+  <strong> Materia</strong>
+ <%=  @presence.student_has_subject.cycle_has_subject.subject.nombre_materia  %>
+</p>
+
+
+<p>
   <strong>Presence type:</strong>
   <%= @presence.presence_type %>
 </p>

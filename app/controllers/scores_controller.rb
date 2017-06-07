@@ -61,6 +61,36 @@ class ScoresController < ApplicationController
     end
   end
 
+  def get_subjects
+    if params[:s].present?
+      s_id = params[:s].to_i
+      subjects_by_student = Subject.joins("INNER JOIN cycle_has_subjects ON subjects.id = cycle_has_subjects.subject_id INNER JOIN student_has_subjects ON cycle_has_subjects.id = student_has_subjects.cycle_has_subject_id").where("student_id = ?", s_id)
+      msg = { "success": "true", "subjects": subjects_by_student }
+    else
+      msg = { "success": false, "subjects": 0 }
+    end
+
+    render json: msg
+  end
+
+  # Get created group by specific student and subject
+  def get_group
+    if params[:stu].present? && params[:sub].present?
+      student_id = params[:stu].to_i
+      subject_id = params[:sub].to_i
+      student_subject = StudentHasSubject.joins(:cycle_has_subject).where("student_id = ? AND subject_id = ?", student_id, subject_id).first
+      if student_subject.present?
+        msg = { "success": "true", "student_subject": student_subject.id }
+      else
+        msg = { "success": false, "student_subject": nil }
+      end
+    else
+      msg = { "success": false, "student_subject": nil }
+    end
+
+    render json: msg
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_score
