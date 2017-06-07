@@ -61,10 +61,40 @@ class StudentHasSubjectsController < ApplicationController
     end
   end
 
+  def get_subjects
+    if params[:c].present?
+      sc_id = params[:c].to_i
+      subjects = Subject.joins(:cycle_has_subjects).where("school_cycle_id = ?", sc_id)
+      msg = { "success": "true", "subjects": subjects }
+    else
+      msg = { "success": false, "subjects": 0 }
+    end
+
+    render json: msg
+  end
+
+  # Get created group by specific school_cycle and subject
+  def get_group
+    if params[:c].present? && params[:s].present?
+      sc_id = params[:c].to_i
+      s_id = params[:s].to_i
+      group = CycleHasSubject.where("school_cycle_id = ? AND subject_id = ?", sc_id, s_id).first
+      if group.present?
+        msg = { "success": "true", "group": group.id }
+      else
+        msg = { "success": false, "group": nil }
+      end
+    else
+      msg = { "success": false, "group": nil }
+    end
+
+    render json: msg
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student_has_subject
-      @student_has_subject = StudentHasSubject.find(params[:id])
+      @student_has_subject =StudentHasSubject.includes(:student, :cycle_has_subject).find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
