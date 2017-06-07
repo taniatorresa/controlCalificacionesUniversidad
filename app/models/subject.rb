@@ -6,4 +6,5 @@ class Subject < ApplicationRecord
   has_many :school_cycles, through: :cycle_has_subjects
 
   has_many :cycle_has_subjects, :dependent => :destroy, :autosave => true , :inverse_of => :subject
+  validates :nombre_materia, :clave_materia, presence: true
 end

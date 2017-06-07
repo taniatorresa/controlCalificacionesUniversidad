@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //= require jquery
+//= require student_has_subjects.js.coffee
 //= require jquery_ujs
 //= require bootstrap.min
 //= require turbolinks
 //= require_tree .
-
