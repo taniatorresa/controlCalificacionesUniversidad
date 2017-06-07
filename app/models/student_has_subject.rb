@@ -10,5 +10,4 @@ class StudentHasSubject < ApplicationRecord
   has_many :presences, :dependent => :destroy
   has_many :scores, :dependent => :destroy
 
-
 end
