@@ -45,12 +45,6 @@ ActiveRecord::Schema.define(version: 20170517170058) do
     t.datetime "updated_at",      null: false
   end
 
-  create_table "groups", force: :cascade do |t|
-    t.string   "clave_grupo"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "periods", force: :cascade do |t|
     t.string   "nombre_periodo"
     t.integer  "period_type"
@@ -97,21 +91,6 @@ ActiveRecord::Schema.define(version: 20170517170058) do
     t.index ["student_id"], name: "index_student_has_subjects_on_student_id"
   end
 
-  create_table "students", force: :cascade do |t|
-    t.string   "matricula"
-    t.string   "nombre"
-    t.string   "apellido_paterno"
-    t.string   "apellido_materno"
-    t.string   "correo_electronico"
-    t.string   "direccion"
-    t.string   "telefono"
-    t.string   "nombre_tutor"
-    t.string   "telefono_tutor"
-    t.string   "correo_tutor"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
   create_table "subjects", force: :cascade do |t|
     t.string   "nombre_materia"
     t.integer  "subject_type"
@@ -120,17 +99,6 @@ ActiveRecord::Schema.define(version: 20170517170058) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["group_id"], name: "index_subjects_on_group_id"
-  end
-
-  create_table "teachers", force: :cascade do |t|
-    t.string   "nombre"
-    t.string   "apellido_paterno"
-    t.string   "apellido_materno"
-    t.string   "grado"
-    t.string   "correo_electronico"
-    t.string   "telefono"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -146,10 +114,6 @@ ActiveRecord::Schema.define(version: 20170517170058) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "user_type"
-    t.string   "nombre"
-    t.string   "apellido_paterno"
-    t.string   "apellido_materno"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
