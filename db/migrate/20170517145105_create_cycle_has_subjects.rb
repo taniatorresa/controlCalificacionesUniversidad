@@ -8,7 +8,9 @@ class CreateCycleHasSubjects < ActiveRecord::Migration[5.0]
       t.boolean :viernes
       t.boolean :sabado
       t.string :horario_clases
-
+      t.references :teacher, index: true, foreign_key: true
+      t.references :subject, index: true, foreign_key: true
+      t.references :school_cycle, index: true, foreign_key: true
       t.timestamps
     end
   end

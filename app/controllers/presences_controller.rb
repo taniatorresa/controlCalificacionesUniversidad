@@ -69,6 +69,6 @@ class PresencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def presence_params
-      params.require(:presence).permit(:presence_type, :fecha_asistencia)
+      params.require(:presence).permit(:presence_type, :fecha_asistencia,:student_has_subject_id)
     end
 end

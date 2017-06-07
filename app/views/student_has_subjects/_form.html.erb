@@ -1,0 +1,34 @@
+<%= form_for(student_has_subject) do |f| %>
+  <% if student_has_subject.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student_has_subject.errors.count, "error") %> prohibited this student_has_subject from being saved:</h2>
+
+      <ul>
+      <% student_has_subject.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :student_subject_type %>
+    <%= f.select :student_subject_type, StudentHasSubject.student_subject_types.keys.to_a, {prompt:"Select"} %>
+  </div>
+
+  <div class="field">
+
+    <%= f.select :cycle_has_subject_id, CycleHasSubject.all.map { |u| u.id } %>
+   </div>
+
+
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.select :student_id, Student.all.map { |u| [u.nombre_estudiante, u.id ]} %>
+   </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

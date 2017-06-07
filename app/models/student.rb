@@ -1,4 +1,10 @@
 class Student < ApplicationRecord
-  has_many :period_has_group, through: :period_has_group_has_student
-  has_many :period_has_group_has_student, :dependent => :destroy, :autosave => true
+
+  has_many :cycle_has_subjects, through: :student_has_subjects
+  has_many :student_has_subjects, :dependent => :destroy, :autosave => true
+  validates :matricula, :nombre, :apellido_paterno, :apellido_materno, :correo_electronico, :direccion, :telefono, :nombre_tutor, :telefono_tutor, :correo_tutor, presence: true
+  def nombre_estudiante
+  	"#{nombre} #{apellido_paterno} #{apellido_materno}"
+  end
+
 end
