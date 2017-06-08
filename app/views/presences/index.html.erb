@@ -5,6 +5,11 @@
 <table>
   <thead>
     <tr>
+      <th>Alumno</th>
+      <th>Carrera</th>
+      <th>Tipo de materia</th>
+      <th>Materia</th>
+      <th>Matricula</th>
       <th>Presence type</th>
       <th>Fecha asistencia</th>
       <th colspan="3"></th>
@@ -14,6 +19,11 @@
   <tbody>
     <% @presences.each do |presence| %>
       <tr>
+        <td><%= presence.student_has_subject.student.nombre_estudiante %></td>
+        <td><%= presence.student_has_subject.cycle_has_subject.school_cycle.career.nombre_carrera %></td>
+        <td><%= presence.student_has_subject.student_subject_type %></td>
+        <td><%= presence.student_has_subject.cycle_has_subject.subject.nombre_materia  %></td>
+        <td><%= presence.student_has_subject.student.matricula%></td>
         <td><%= presence.presence_type %></td>
         <td><%= presence.fecha_asistencia %></td>
         <td><%= link_to 'Show', presence %></td>
