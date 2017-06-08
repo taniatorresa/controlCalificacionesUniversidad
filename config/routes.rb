@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :school_cycles
   resources :careers
   resources :faculties
+  resources :searches
 
   root 'home#index'
 

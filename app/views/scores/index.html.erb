@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Scores</h1>
 
 <table>
   <thead>
     <tr>
+      <th>Alumno</th>
+      <th>Carrera</th>
+      <th>Tipo de materia</th>
+      <th>Materia</th>
+      <th>Matricula</th>
       <th>Aplicar parcial</th>
       <th>Score type</th>
       <th>Calification</th>
@@ -15,7 +19,11 @@
   <tbody>
     <% @scores.each do |score| %>
       <tr>
-        <td><%= score.aplicar_parcial %></td>
+        <td><%= score.student_has_subject.student.nombre_estudiante %></td>
+        <td><%= score.student_has_subject.cycle_has_subject.school_cycle.career.nombre_carrera %></td>
+        <td><%= score.student_has_subject.student_subject_type %></td>
+        <td><%= score.student_has_subject.cycle_has_subject.subject.nombre_materia  %></td>
+        <td><%= score.student_has_subject.student.matricula%></td>
         <td><%= score.score_type %></td>
         <td><%= score.calification %></td>
         <td><%= link_to 'Show', score %></td>
