@@ -5,6 +5,13 @@ class ScoresController < ApplicationController
   # GET /scores.json
   def index
     @scores = Score.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = ScorePdf.new(@scores)
+        send_data pdf.render, filename: 'score.pdf', type: 'application/pdf', disposition: 'inline'
+      end
+    end
 
   end
 

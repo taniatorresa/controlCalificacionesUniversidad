@@ -5,6 +5,13 @@ class PresencesController < ApplicationController
   # GET /presences.json
   def index
     @presences = Presence.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = PresencePdf.new(@presences)
+        send_data pdf.render, filename: 'presence.pdf', type: 'application/pdf', disposition: 'inline'
+      end
+    end
   end
 
   # GET /presences/1
