@@ -10,6 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //= require jquery
+//= requiere presences.js.coffee
+//= requiere score.js.coffee
 //= require student_has_subjects.js.coffee
 //= require jquery_ujs
 //= require bootstrap.min
