@@ -1,6 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Alumno</strong>
+  <%= @score.student_has_subject.student.nombre_estudiante %>
+</p>
+
+
+<p>
+  <strong>Carrera</strong>
+  <%= @score.student_has_subject.cycle_has_subject.school_cycle.career.nombre_carrera%>
+</p>
+
+<p>
+  <strong>Tipo de estudiante</strong>
+  <%= @score.student_has_subject.student_subject_type %>
+</p>
+
+<p>
+  <strong>Materia</strong>
+  <%= @score.student_has_subject.cycle_has_subject.subject.nombre_materia  %>
+</p>
+
+
+<p>
+  <strong>Matricula</strong>
+  <%= @score.student_has_subject.student.matricula %>
+</p>
+
+<p>
   <strong>Aplicar parcial:</strong>
   <%= @score.aplicar_parcial %>
 </p>
@@ -14,6 +41,8 @@
   <strong>Calification:</strong>
   <%= @score.calification %>
 </p>
+
+
 
 <%= link_to 'Edit', edit_score_path(@score) %> |
 <%= link_to 'Back', scores_path %>

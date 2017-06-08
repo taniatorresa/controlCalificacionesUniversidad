@@ -1,6 +1,46 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Alumno</strong>
+  <%= @student_has_subject.student.nombre_estudiante %>
+</p>
+
+
+<p>
+  <strong>Carrera</strong>
+  <%= @student_has_subject.cycle_has_subject.school_cycle.career.nombre_carrera%>
+</p>
+
+<p>
+  <strong>Ciclo escolar</strong>
+  <%=  @student_has_subject.cycle_has_subject.school_cycle.nombre_ciclo %>
+</p>
+
+<p>
+  <strong>Ciclo escolar</strong>
+  <%=  @student_has_subject.cycle_has_subject.school_cycle.nombre_ciclo %>
+</p>
+
+<p>
+  <strong>Materia</strong>
+  <%= @student_has_subject.cycle_has_subject.subject.nombre_materia %>
+</p>
+
+<p>
+  <strong>Clave Materia</strong>
+  <%=  @student_has_subject.cycle_has_subject.subject.clave_materia %>
+</p>
+
+<p>
+  <strong> Tipo de Materia</strong>
+  <%= @student_has_subject.cycle_has_subject.subject.subject_type %>
+</p>
+
+<p>
+  <strong> Maestro </strong>
+  <%= @student_has_subject.cycle_has_subject.teacher.nombre_maestro %>
+</p>
+<p>
   <strong>Student subject type:</strong>
   <%= @student_has_subject.student_subject_type %>
 </p>
@@ -9,6 +49,39 @@
   <%= @student_has_subject.student.matricula %>
 </p>
 
+
+
+<p>
+  <strong> Dias de clase </strong>
+ <table>
+  <thead>
+    <tr>
+      <th>Lunes</th>
+      <th>Martes</th>
+      <th>Miercoles</th>
+      <th>Jueves</th>
+      <th>Viernes</th>
+      <th>Sabado</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%=  @student_has_subject.cycle_has_subject.lunes %></td>
+        <td><%=  @student_has_subject.cycle_has_subject.martes %></td>
+        <td><%=  @student_has_subject.cycle_has_subject.miercoles %></td>
+        <td><%=  @student_has_subject.cycle_has_subject.jueves %></td>
+        <td><%=  @student_has_subject.cycle_has_subject.viernes %></td>
+        <td><%=  @student_has_subject.cycle_has_subject.sabado %></td>
+      </tr>
+  <tr>
+     <th>Horario</th>
+     <td><%= @student_has_subject.cycle_has_subject.horario_clases %></td>
+  </tr>
+  </tbody>
+</table>
+</p>
 
 <%= link_to 'Edit', edit_student_has_subject_path(@student_has_subject) %> |
 <%= link_to 'Back', student_has_subjects_path %>
